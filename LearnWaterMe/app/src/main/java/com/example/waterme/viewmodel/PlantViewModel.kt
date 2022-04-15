@@ -49,6 +49,7 @@ class PlantViewModel(application: Application): ViewModel() {
             .setInputData(data)
             .setInitialDelay(duration,unit)
             .build()
+        //duraiton and unit from reminderDialogFragment
 
 
 
