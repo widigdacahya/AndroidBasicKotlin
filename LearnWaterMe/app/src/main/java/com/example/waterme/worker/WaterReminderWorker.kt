@@ -35,6 +35,13 @@ class WaterReminderWorker(
     val notificationId = 17
 
     override fun doWork(): Result {
+
+
+        /*
+        * Intent ini dipake kalau notif diklik, intent itu ngapain
+        * > FLAG_CLEAT_TASTK untuk clear backstack aplikasinya
+        * > pending intent mau intentnya jalan ketika klik notif
+        * */
         val intent = Intent(applicationContext, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
@@ -42,12 +49,18 @@ class WaterReminderWorker(
         val pendingIntent: PendingIntent = PendingIntent
             .getActivity(applicationContext, 0, intent, 0)
 
+        /*
+        * input data itu internal variable dalam worker class biar bisa dapet
+        * inputnya
+        *
+        * dalam hal ini plant name
+        * */
         val plantName = inputData.getString(nameKey)
 
         val builder = NotificationCompat.Builder(applicationContext, BaseApplication.CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_android_black_24dp)
             .setContentTitle("Water me!")
-            .setContentText("It's time to water your $plantName")
+            .setContentText("It's time to water your $plantName \uD83D\uDCA6 \uD83D\uDCA6")
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
