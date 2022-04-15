@@ -29,6 +29,8 @@ class PlantViewModel(application: Application): ViewModel() {
 
     val plants = DataSource.plants
 
+    private val workManager = WorkManager.getInstance(application)
+
     internal fun scheduleReminder(
         duration: Long,
         unit: TimeUnit,
@@ -54,6 +56,9 @@ class PlantViewModel(application: Application): ViewModel() {
 
 
         // TODO: Enqueue the request as a unique work request
+        workManager.enqueue(reminderWorkRequest)
+
+
     }
 }
 
