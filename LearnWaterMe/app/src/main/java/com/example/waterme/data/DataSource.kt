@@ -26,8 +26,8 @@ object DataSource {
            description = "Stone mimicking succulent",
        ),
        Plant(
-//           name = "Carrot \uD83E\uDD55",
-           name = "Carrot",
+           name = "Carrot \uD83E\uDD55",
+//           name = "Carrot",
            schedule = "daily",
            type = "Root",
            description = "Hardy root vegetable"
