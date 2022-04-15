@@ -15,7 +15,6 @@
  */
 package com.example.waterme.data
 
-import com.example.waterme.R
 import com.example.waterme.model.Plant
 
 object DataSource {
