@@ -19,4 +19,14 @@
     <string name="channel_name">water_channel</string>
     <string name="channel_description">water_reminder</string>
     <string name="water_reminder">Remind me to water in…</string>
+
+
+    <integer-array name="plantimage">
+        <item>@drawable/strawberry</item>
+        <item>@drawable/strawberry</item>
+        <item>@drawable/strawberry</item>
+        <item>@drawable/strawberry</item>
+        <item>@drawable/strawberry</item>
+        <item>@drawable/strawberry</item>
+    </integer-array>
 </resources>

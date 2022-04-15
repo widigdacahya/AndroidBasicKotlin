@@ -15,45 +15,46 @@
  */
 package com.example.waterme.data
 
+import com.example.waterme.R
 import com.example.waterme.model.Plant
 
 object DataSource {
    val plants = listOf(
        Plant(
-           name = "Lithop",
+           name = "Lithop \uD83E\uDD5D",
            schedule = "monthly",
            type = "Succulent",
-           description = "Stone mimicking succulent"
+           description = "Stone mimicking succulent",
        ),
        Plant(
-           name = "Carrot",
+           name = "Carrot \uD83E\uDD55",
            schedule = "daily",
            type = "Root",
            description = "Hardy root vegetable"
        ),
        Plant(
-           name = "Peony",
+           name = "Peony \uD83C\uDF37",
            schedule = "weekly",
            type = "Flower",
            description = "Spring blooming flower"
        ),
        Plant(
-           name = "Pothos",
+           name = "Pothos \uD83C\uDF3F",
            schedule = "weekly",
            type = "Houseplant",
            description = "Indoor vine"
        ),
        Plant(
-           name = "Fiddle Leaf Fig",
+           name = "Fiddle Leaf Fig ☘️",
            schedule = "weekly",
            type = "Broadleaf evergreen",
            description = "Ornamental fig"
        ),
        Plant(
-           name = "Strawberry",
+           name = "Strawberry \uD83C\uDF53",
            schedule = "daily",
            type = "Fruit",
-           description = "Delicious 'multiple fruit'"
+           description = "Delicious 'multiple fruit'",
        )
    )
 }
