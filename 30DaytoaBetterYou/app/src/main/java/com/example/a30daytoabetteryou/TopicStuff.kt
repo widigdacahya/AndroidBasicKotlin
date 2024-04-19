@@ -1,5 +1,8 @@
 package com.example.a30daytoabetteryou
 
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -74,7 +77,18 @@ fun ItemTopicList(
             horizontal = 12.dp
         )
     ) {
-        Column() {
+        Column(
+            modifier = modifier
+                .animateContentSize(
+                    animationSpec = spring(
+                        dampingRatio = Spring.DampingRatioNoBouncy,
+                        stiffness = Spring.StiffnessMedium
+                    )
+                )
+                .padding(
+                    bottom = 8.dp
+                )
+        ) {
             Image(
                 painter = painterResource(id = topicData.imageResourceId),
                 contentDescription = stringResource(id = topicData.topicStringResourceId) + "photo",
