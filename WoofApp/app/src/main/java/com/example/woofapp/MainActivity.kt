@@ -6,10 +6,13 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -46,6 +49,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.woofapp.data.Dog
 import com.example.woofapp.data.dogs
 import com.example.woofapp.ui.theme.Shapes
@@ -82,12 +86,17 @@ fun WoofApp() {
         topBar = {
             WoofTopAppBar()
         }
-    ) {it ->
-        LazyColumn(contentPadding = it) {
+    ) { it ->
+        LazyColumn(
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            contentPadding = it,
+            modifier = Modifier
+                .padding(dimensionResource(id = R.dimen.padding_small))
+        ) {
             items(dogs) {
                 DogItemOfTheList(
                     dog = it,
-                    modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_small))
+                    modifier = Modifier
                 )
             }
         }
@@ -243,6 +252,10 @@ fun DogItemOfTheList(
     var expandedDogItem by remember {
         mutableStateOf(false)
     }
+    val colorDogItemConditioning by animateColorAsState(
+        targetValue = if(expandedDogItem) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.tertiaryContainer
+    )
+
     Card(
         modifier = modifier,
         shape = Shapes.medium
@@ -255,6 +268,7 @@ fun DogItemOfTheList(
                         stiffness = Spring.StiffnessMedium
                     )
                 )
+                .background(color=colorDogItemConditioning)
         ) {
             Row(
                 modifier = modifier
