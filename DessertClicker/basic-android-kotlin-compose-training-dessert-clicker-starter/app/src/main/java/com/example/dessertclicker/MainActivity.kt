@@ -20,6 +20,7 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -71,10 +72,15 @@ import com.example.dessertclicker.data.Datasource
 import com.example.dessertclicker.model.Dessert
 import com.example.dessertclicker.ui.theme.DessertClickerTheme
 
+private const val TAG = "MainActivity"
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
+
         super.onCreate(savedInstanceState)
+        Log.d(TAG, "onCreated: Eyo onCreated Spawned Here")
+
         setContent {
             DessertClickerTheme {
                 // A surface container using the 'background' color from the theme
@@ -87,6 +93,38 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+        Log.d(TAG, "onStart: On Starts Appear")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "onResume: Hello I am on Resume ")
+    }
+
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d(TAG, "\nonRestart: onRestart here, what can i do? where am i?")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(TAG, "\nonPause: I am is the onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "\nonStop: stop here, I am onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "\nonDestroy: Destroyed by onDestroy")
     }
 }
 
@@ -171,9 +209,11 @@ private fun DessertClickerApp(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(
-                        start = WindowInsets.safeDrawing.asPaddingValues()
+                        start = WindowInsets.safeDrawing
+                            .asPaddingValues()
                             .calculateStartPadding(layoutDirection),
-                        end = WindowInsets.safeDrawing.asPaddingValues()
+                        end = WindowInsets.safeDrawing
+                            .asPaddingValues()
                             .calculateEndPadding(layoutDirection),
                     )
                     .background(MaterialTheme.colorScheme.primary)
